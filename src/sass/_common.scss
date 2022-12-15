@@ -1,1 +1,13 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+@import '~node_modules/font-awesome/css/font-awesome.min.css';
+@import '~node_modules/simplelightbox/dist/simple-lightbox.min.css';
+
+section{
+	padding: 15px;
+}
+
+a{
+	text-decoration: none;
+	color: black;
+	width: calc((100% - 60px) / 4);
+}
