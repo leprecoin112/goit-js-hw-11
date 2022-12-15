@@ -12,6 +12,7 @@ export default class PixaBayApiService {
     const res = await axios.get(
       `${BASE_URL}&q=${this.searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
     );
+
     return res;
   }
 
@@ -21,8 +22,8 @@ export default class PixaBayApiService {
   resetPage() {
     this.page = 1;
   }
-  calcPage(hits) {
-    this.pages = hits < 40 ? 1 : hits / 40;
+  calcPages(hits) {
+    this.pages = Math.ceil(hits / 40);
   }
 
   get query() {

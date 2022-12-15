@@ -48,7 +48,7 @@ async function onSearch(e) {
       return;
     }
 
-    pixaBayApiServices.calcPage(totalHits);
+    pixaBayApiServices.calcPages(totalHits);
 
     renderGallery(images.data);
     success(totalHits);
@@ -59,6 +59,7 @@ async function onSearch(e) {
   } catch (error) {
     console.log(error.message);
     pixaBayApiServices.resetPage();
+    removeLoadingSpinner();
     Notiflix.Notify.failure('Oops!');
   }
 }
@@ -76,7 +77,7 @@ async function onloadMore() {
 }
 
 function checkEndResults() {
-  if (pixaBayApiServices.page >= pixaBayApiServices.pages) {
+  if (pixaBayApiServices.page > pixaBayApiServices.pages) {
     loadMoreBtn.hide();
     Notiflix.Notify.warning(
       "We're sorry, but you've reached the end of search results."
